@@ -40,6 +40,9 @@ export const PlannerAPI = {
   createNode(payload: Partial<RSIPNode>): Promise<RSIPNode> {
     return request("/rsip/nodes", { method: "POST", body: JSON.stringify(payload) });
   },
+  deleteNode(id: string): Promise<{ status: string }> {
+    return request(`/rsip/nodes/${id}`, { method: "DELETE" });
+  },
   activateNode(id: string, date?: string): Promise<RSIPNode> {
     const qs = date ? `?date=${encodeURIComponent(date)}` : "";
     return request(`/rsip/nodes/${id}/activate${qs}`, { method: "POST" });

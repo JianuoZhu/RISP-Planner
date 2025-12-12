@@ -103,6 +103,12 @@ def create_app() -> FastAPI:
             raise HTTPException(status_code=400, detail="Invalid move")
         return updated
 
+    @app.delete("/rsip/nodes/{node_id}")
+    def delete_node(node_id: str):
+        if not service.delete_node(node_id):
+            raise HTTPException(status_code=404, detail="Node not found")
+        return {"status": "deleted"}
+
     @app.post("/rsip/nodes/{node_id}/fail")
     def fail_node(node_id: str, payload: RSIPNodeFailure):
         return service.fail_node(node_id, payload)

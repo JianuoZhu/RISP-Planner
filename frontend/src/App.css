@@ -1,15 +1,82 @@
-.card-shadow {
-  box-shadow: 0 12px 60px rgba(15, 23, 42, 0.45);
-}
-.glass {
-  background: rgba(255, 255, 255, 0.06);
+.section-card {
+  background: rgba(255, 255, 255, var(--panel-alpha, 0.08));
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 12px 60px rgba(15, 23, 42, 0.45);
 }
-.gradient-border {
-  border: 1px solid rgba(148, 163, 184, 0.25);
+
+.section-card-subtle {
+  background: rgba(255, 255, 255, calc(var(--panel-alpha, 0.08) * 0.8));
+}
+
+.glass {
+  background: rgba(255, 255, 255, var(--panel-alpha, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
 }
 
 .badge {
   @apply inline-flex items-center rounded-full px-2 py-1 text-xs font-semibold uppercase tracking-wide;
+}
+
+.sidebar {
+  width: 280px;
+  padding: 2rem 1.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(18px);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.9rem;
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.nav-item-active {
+  background: linear-gradient(120deg, rgba(59, 130, 246, 0.2), rgba(34, 211, 238, 0.15));
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #fff;
+}
+
+.theme-card {
+  min-height: 100px;
+  border-radius: 1rem;
+  padding: 1rem;
+  color: #fff;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.theme-card-active {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 14px 30px rgba(34, 211, 238, 0.35);
+}
+
+.card-shadow {
+  box-shadow: 0 12px 60px rgba(15, 23, 42, 0.45);
+}
+
+.gradient-border {
+  border: 1px solid rgba(148, 163, 184, 0.25);
 }

@@ -157,6 +157,16 @@ class PlannerService:
                 return nodes[idx]
         return None
 
+    def delete_node(self, node_id: str) -> bool:
+        nodes = self.storage.load_nodes()
+        if not any(n.id == node_id for n in nodes):
+            return False
+
+        subtree_ids = {n.id for n in self._collect_subtree(nodes, node_id)}
+        remaining_nodes = [n for n in nodes if n.id not in subtree_ids]
+        self.storage.write(rsip_nodes=remaining_nodes)
+        return True
+
     def _collect_subtree(self, nodes: List[RSIPNode], root_id: str) -> List[RSIPNode]:
         child_map = {}
         for node in nodes:
